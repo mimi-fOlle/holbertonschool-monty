@@ -25,10 +25,16 @@ void get_opcode_func(char *opcode, stack_t **stack, unsigned int line_number)
 	while (instructions[i].opcode)
 	{
 		if (strcmp(instructions[i].opcode, opcode) == 0)
+		{
 			instructions[i].f(stack, line_number);
+			break;
+		}
 		i++;
 	}
 
-	fprintf(stderr, "L<%d>: unknown instruction %s\n", line_number, opcode);
-	exit(EXIT_FAILURE);
+	if (instructions[i].opcode == NULL)
+	{
+		fprintf(stderr, "L<%d>: unknown instruction %s\n", line_number, opcode);
+		exit(EXIT_FAILURE);
+	}
 }

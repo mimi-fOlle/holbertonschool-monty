@@ -23,10 +23,9 @@ int main(int ac, char **av)
 	int line_nb = 1;
 	FILE *fd;
 	int j = 0;
-	char *opcode = NULL;
+	char *opcode;
 	char *data = NULL;
 	char *terminator = NULL;
-	char *cur_word;
 
 	if (ac != 2)
 	{
@@ -35,7 +34,6 @@ int main(int ac, char **av)
 	}
 
 	filename = av[1];
-
 	fd = fopen(filename, "r");
 
 	if (fd == NULL)
@@ -46,12 +44,12 @@ int main(int ac, char **av)
 
 	while (rd = getline(&line, &n, fd) != -1)
 	{
-		cur_word = strtok(line, " ");
+		opcode = strtok(line, " ");
 
-		if (cur_word == NULL)
+		if (opcode == NULL)
 			continue;
 
-		if (strcmp(cur_word, "push") == 0)
+		if (strcmp(opcode, "push") == 0)
 		{
 			data = strtok(NULL, " ");
 			push(data, &stack, line_nb);
