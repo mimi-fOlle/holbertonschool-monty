@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "monty.h"
 #include <stdlib.h>
+#include <ctype.h>
 
 void push(char *data, stack_t **stack, unsigned int line_number)
 {
@@ -10,18 +11,28 @@ void push(char *data, stack_t **stack, unsigned int line_number)
 	//printf("data: %s\n", data);
 	if (data == NULL)
 	{
-		printf("L<line_number>: usage: push integer\n");
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		is_error = 1;
 	}
 
 	box = (stack_t *)malloc(sizeof(stack_t));
 	if (box == NULL)
-		exit(EXIT_FAILURE);
-
-	box->n = atoi(data);
-//	box->next = *stack;
-	box->next = NULL;
-	box->prev = NULL;
+	{
+		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		is_error = 1;
+	}
+	if (!isdigit(atoi(data)))
+	{
+		box->n = atoi(data);
+//		box->next = *stack;
+		box->next = NULL;
+		box->prev = NULL;
+	}
+	else
+	{
+		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		is_error = 1;
+	}
 
 	//printf("box->n: %d & line_number-1 = %d\n", box->n, line_number-1);
 
