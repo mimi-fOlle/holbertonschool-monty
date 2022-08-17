@@ -11,7 +11,7 @@ void pop(stack_t **stack, unsigned int line_nb)
 {
 	stack_t *following_deleted = *stack;
 
-	if (!stack)
+	if (!*stack)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_nb);
 		is_error = 1;
