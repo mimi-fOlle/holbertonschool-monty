@@ -16,7 +16,7 @@ void push(char *data, stack_t **stack, unsigned int line_number)
 
 	if (data == NULL)
 	{
-		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		is_error = 1;
 	}
 	else
@@ -24,7 +24,7 @@ void push(char *data, stack_t **stack, unsigned int line_number)
 		box = (stack_t *)malloc(sizeof(stack_t));
 		if (box == NULL)
 		{
-			fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			is_error = 1;
 		}
 		if (!isdigit(atoi(data)))
@@ -35,7 +35,7 @@ void push(char *data, stack_t **stack, unsigned int line_number)
 		}
 		else
 		{
-			fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			is_error = 1;
 		}
 
