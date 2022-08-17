@@ -19,7 +19,7 @@ void push(char *data, stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 
 	box->n = atoi(data);
-	//box->next = *stack;
+//	box->next = *stack;
 	box->next = NULL;
 	box->prev = NULL;
 
