@@ -14,11 +14,6 @@ void get_opcode_func(char *opcode, stack_t **stack, unsigned int line_number)
 	int i = 0;
 	instruction_t instructions[] = {
 		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
 		{NULL, NULL}
 	};
 
@@ -34,7 +29,7 @@ void get_opcode_func(char *opcode, stack_t **stack, unsigned int line_number)
 
 	if (instructions[i].opcode == NULL)
 	{
-		fprintf(stderr, "L<%d>: unknown instruction %s\n", line_number, opcode);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 		is_error = 1;
 	}
 }

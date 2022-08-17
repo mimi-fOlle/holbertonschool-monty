@@ -8,18 +8,15 @@
   * @line_nb: The line number, unused
   */
 
-void pint(stack_t **stack, unsigned int line_nb)
+void pint(stack_t **stack, __attribute__((unused)) unsigned int line_nb)
 {
-	stack_t *print_top;
+	stack_t *print_top = *stack;
 
-	if (stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L<%d>: can't pint, stack empty\n", line_nb);
 		is_error = 1;
 	}
-	while (print_top)
-	{
-		printf("%d\n", print_top->n);
-		print_top = print_top->next;
-	}
+	printf("%d\n", print_top->n);
 }
+
