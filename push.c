@@ -35,17 +35,15 @@ void push(char *data, stack_t **stack, unsigned int line_number)
 			i++;
 		if (data[i] < 48 || data[i] > 57)
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", ++line_number);
 			is_error = 1;
 			return;
 		}
 		i++;
 	}
-
 	box->n = atoi(data);
 	box->next = NULL;
 	box->prev = NULL;
-
 	if (!*stack)
 		*stack = box;
 	else

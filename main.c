@@ -23,7 +23,7 @@ int main(int ac, char **av)
 	stack_t *to_free = stack;
 	ssize_t rd = 0;
 	size_t n = 0;
-	int line_nb = 1;
+	int line_nb = 0;
 	FILE *fd;
 	char *opcode;
 	char *data = NULL;
