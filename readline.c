@@ -6,6 +6,7 @@
 /**
  * readline - Extracts opcode from a stream and executes it
  * @stream: Stream to read
+ * @stack: The stack to execute the opcode function to
  */
 void readline(FILE *stream, stack_t **stack)
 {
