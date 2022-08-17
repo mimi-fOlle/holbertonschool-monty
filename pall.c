@@ -2,8 +2,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void pall(stack_t **stack, unsigned int line_nb)
+/**
+ * pall - Prints all the values on a stack, starting from the top
+ * @stack: The stack
+ * @line_nb: The Monty line number, unused
+ */
+void pall(stack_t **stack, __attribute__((unused)) unsigned int line_nb)
 {
-	printf("%d", line_nb);
+	stack_t *to_print = *stack;
+
+	while (to_print)
+	{
+		printf("%d", to_print->n);
+		to_print = to_print->next;
+	}
 }
 

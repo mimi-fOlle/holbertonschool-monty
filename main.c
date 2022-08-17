@@ -45,7 +45,7 @@ int main(int ac, char **av)
 
 	while ((rd = getline(&line, &n, fd) != -1) && !is_error)
 	{
-		opcode = strtok(line, " ");
+		opcode = strtok(line, "\n ");
 
 		if (opcode == NULL)
 			continue;
