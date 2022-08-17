@@ -5,7 +5,7 @@
 /**
   * pint - Prints the value at the top of the stack
   * @stack: The stack
-  * @line_nb: The line number, unused
+  * @line_nb: The Monty line number, unused
   */
 
 void pint(stack_t **stack, __attribute__((unused)) unsigned int line_nb)
