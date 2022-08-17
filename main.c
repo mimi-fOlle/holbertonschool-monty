@@ -45,10 +45,13 @@ int main(int ac, char **av)
 
 	while ((rd = getline(&line, &n, fd) != -1) && !is_error)
 	{
+		line_nb++;
 		opcode = strtok(line, "\n ");
 
 		if (opcode == NULL)
+		{
 			continue;
+		}
 
 		if (strcmp(opcode, "push") == 0)
 		{
@@ -59,8 +62,6 @@ int main(int ac, char **av)
 		{
 			get_opcode_func(opcode, &stack, line_nb);
 		}
-
-		line_nb++;
 	}
 
 	while (stack)
