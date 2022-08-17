@@ -35,6 +35,6 @@ void get_opcode_func(char *opcode, stack_t **stack, unsigned int line_number)
 	if (instructions[i].opcode == NULL)
 	{
 		fprintf(stderr, "L<%d>: unknown instruction %s\n", line_number, opcode);
-		exit(EXIT_FAILURE);
+		is_error = 1;
 	}
 }

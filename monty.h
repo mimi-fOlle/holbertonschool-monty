@@ -31,6 +31,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern int is_error;
+
 void get_opcode_func(char *command, stack_t **stack, unsigned int line_nb);
 void push(char *data, stack_t **stack, unsigned int line_nb);
 void pall(stack_t **stack, unsigned int line_nb);

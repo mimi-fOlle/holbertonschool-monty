@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+int is_error = 0;
+
 /**
  * main - Interpretes Monty ByteCode files
  * @ac: Argument count
@@ -18,14 +20,13 @@ int main(int ac, char **av)
 	char *filename;
 	char *line = NULL;
 	stack_t *stack = NULL;
+	stack_t *to_free = stack;
 	ssize_t rd = 0;
 	size_t n = 0;
 	int line_nb = 1;
 	FILE *fd;
-	int j = 0;
 	char *opcode;
 	char *data = NULL;
-	char *terminator = NULL;
 
 	if (ac != 2)
 	{
@@ -42,7 +43,7 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
-	while (rd = getline(&line, &n, fd) != -1)
+	while ((rd = getline(&line, &n, fd) != -1) && !is_error)
 	{
 		opcode = strtok(line, " ");
 
@@ -60,10 +61,18 @@ int main(int ac, char **av)
 		}
 
 		line_nb++;
-/*		printf("opcode: %s\n", opcode);
-		printf("data: %s\n", data);
-*/
 	}
 
+	while (stack)
+	{
+		to_free = stack;
+		stack = stack->next;
+		free(to_free);
+	}
+	free(line);
+	fclose(fd);
+
+	if (is_error)
+		exit(EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
