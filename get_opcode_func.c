@@ -14,11 +14,6 @@ void get_opcode_func(char *opcode, stack_t **stack, unsigned int line_number)
 	int i = 0;
 	instruction_t instructions[] = {
 		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
 		{NULL, NULL}
 	};
 
