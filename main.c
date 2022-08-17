@@ -18,15 +18,9 @@ int is_error = 0;
 int main(int ac, char **av)
 {
 	char *filename;
-	char *line = NULL;
 	stack_t *stack = NULL;
 	stack_t *to_free = stack;
-	ssize_t rd = 0;
-	size_t n = 0;
-	int line_nb = 0;
-	FILE *fd;
-	char *opcode;
-	char *data = NULL;
+	FILE *stream;
 
 	if (ac != 2)
 	{
@@ -35,34 +29,14 @@ int main(int ac, char **av)
 	}
 
 	filename = av[1];
-	fd = fopen(filename, "r");
-
-	if (fd == NULL)
+	stream = fopen(filename, "r");
+	if (stream == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((rd = getline(&line, &n, fd) != -1) && !is_error)
-	{
-		line_nb++;
-		opcode = strtok(line, "\n ");
-
-		if (opcode == NULL)
-		{
-			continue;
-		}
-
-		if (strcmp(opcode, "push") == 0)
-		{
-			data = strtok(NULL, "\n ");
-			push(data, &stack, line_nb);
-		}
-		else
-		{
-			get_opcode_func(opcode, &stack, line_nb);
-		}
-	}
+	readline(stream, &stack);
 
 	while (stack)
 	{
@@ -70,8 +44,7 @@ int main(int ac, char **av)
 		stack = stack->next;
 		free(to_free);
 	}
-	free(line);
-	fclose(fd);
+	fclose(stream);
 
 	if (is_error)
 		exit(EXIT_FAILURE);

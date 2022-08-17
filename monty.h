@@ -1,6 +1,6 @@
 #ifndef monty_h
 #define monty_h
-#include <stdarg.h>
+#include <stdio.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -33,6 +33,7 @@ typedef struct instruction_s
 
 extern int is_error;
 
+void readline(FILE *stream, stack_t **stack);
 void get_opcode_func(char *command, stack_t **stack, unsigned int line_nb);
 void push(char *data, stack_t **stack, unsigned int line_nb);
 void pall(stack_t **stack, unsigned int line_nb);
