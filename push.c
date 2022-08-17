@@ -38,7 +38,6 @@ void push(char *data, stack_t **stack, unsigned int line_number)
 		is_error = 1;
 	}
 
-
 	if (*stack == NULL)
 		*stack = box;
 	else
