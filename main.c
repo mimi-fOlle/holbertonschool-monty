@@ -52,7 +52,7 @@ int main(int ac, char **av)
 
 		if (strcmp(opcode, "push") == 0)
 		{
-			data = strtok(NULL, " ");
+			data = strtok(NULL, "\n ");
 			push(data, &stack, line_nb);
 		}
 		else
