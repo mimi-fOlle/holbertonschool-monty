@@ -22,14 +22,9 @@ void swap(stack_t **stack, unsigned int line_nb)
 		tmp = (*stack)->next;
 		(*stack)->next = tmp->next;
 
-		if (!tmp->next)
-			tmp->next->prev = *stack;
-		else
-		{
-			tmp->next = *stack;
-			(*stack)->prev = tmp;
-			tmp->prev = NULL;
-			*stack = tmp;
-		}
+		tmp->next = *stack;
+		(*stack)->prev = tmp;
+		tmp->prev = NULL;
+		*stack = tmp;
 	}
 }
