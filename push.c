@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "monty.h"
 #include <stdlib.h>
-#include <ctype.h>
 
 /**
  * push - Pushes an element to the stack
